@@ -1,6 +1,7 @@
 module SensorFeatureTracking
 
 using Images, ImageView, ImageDraw, ImageFeatures, Gtk.ShortNames, VideoIO, ImageFiltering
+using TransformUtils, CoordinateTransformations, StaticArrays
 
 export
   # new functions written here
@@ -22,10 +23,12 @@ export
   Keypoints,
   Feature,
   colorview,
+  # from TransformUtils
+  rotate,
+  rotate!,
 
   # BlockMatching
   BlockTracker,
-  REGION_SIZE,
   compute_diff,
   compute_sad,
   compute_ssd,
@@ -33,18 +36,28 @@ export
   block_tracker!,
   grid_features!,
 
+
+  # Sensor and Camera Geometry Utilities
+  IMU_DATA,
+  PInt64,
+  CameraModel,
+  integrateGyroBetweenFrames!,
+  estimateRotationFromKeypoints,
+  predictHomographyIMU!,
+  predictAffinity,
+  HornAbsoluteOrientation,
+
   # Tracking Algorithms
   ImageTrackerSetup,
   KTL_Tracker!,
   trackOneFeaturePyramid,
   trackOneFeature,
   warpping!
-  
-
 
 
 include("Common.jl")
 include("BlockMatchingFlow.jl")
+include("SensorCameraGeometryUtils.jl")
 include("KLTTrackingAlgorithms.jl")
 
 
