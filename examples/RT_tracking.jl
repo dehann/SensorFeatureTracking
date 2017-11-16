@@ -26,7 +26,7 @@ nfeatures=10
 
 frame_counter = 2
 window_counter = 0
-update_reference_frame_count = 5
+update_reference_frame_count = 10
 
 number_frames = frame_counter_to - frame_counter_from +1
 
@@ -53,7 +53,7 @@ feature_path_img_end = deepcopy(img_end)
 feature_path_img_end = Gray.(feature_path_img_end);
 
 #constructor function for structs ITVar and ITConst
-ITVar, ITConst = ImageTrackerSetup(orgI_setup, corners, windowSize = 30, TrackingType_setup = TrackingType_InversedPyramid)
+ITVar, ITConst = ImageTrackerSetup(orgI_setup, corners, windowSize = windowSize_15, TrackingType_setup = TrackingType_Inversed)
 # fillNewImageTemplates!(ITVar, ITConst)
 #########
 # Section 3: Run KLT tracker on the selected image sequence
